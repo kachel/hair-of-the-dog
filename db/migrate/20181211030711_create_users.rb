@@ -5,8 +5,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :password_digest
 
-      # TODO for oauth later
-
       t.timestamps
     end
   end
