@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  resources :user
-  root 'user#welcome'
+  resources :users
+  root 'users#welcome'
+  get '/auth/:provider/callback', to: 'sessions#create'
 end
