@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, presence: true
 
-  #  inspired by Devise User#from_omniauth 
+  # inspired by Devise User#from_omniauth 
   def self.find_or_create_by_omniauth(auth_hash)
     where(email: auth_hash["info"]["email"]).first_or_create do |u|
       u.password = SecureRandom.hex
