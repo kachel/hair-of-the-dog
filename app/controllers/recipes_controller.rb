@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   def show
+    
   end
 
   def new
@@ -8,15 +9,13 @@ class RecipesController < ApplicationController
     @recipe.ingredients.build
   end
 
-
-
   private
 
     def recipe_params
       params.require(:recipe).permit(
-        :title,
-        ingredients_attributes: [:unit, :name, :qty],
-        directions_attributes: [:step_1, :step_2, :step_3,:step_4,:step_5]
+        :title, :servings, :time, :description,
+        ingredients_attributes: [:name],
+        directions_attributes: [:step_1, :step_2, :step_3]
       )
     end
 end

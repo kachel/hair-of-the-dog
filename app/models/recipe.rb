@@ -6,4 +6,5 @@ class Recipe < ApplicationRecord
   has_many :directions
   accepts_nested_attributes_for :directions
   accepts_nested_attributes_for :ingredients
+  
 end

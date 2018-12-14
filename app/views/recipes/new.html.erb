@@ -15,7 +15,7 @@
     <%= f.label :description, "Tell us a little bit about your masterpiece <3" %>
     <%= f.text_area :description, class: 'form-control' %>
 
-    <h3>How do you make it?</h3>
+    <h3>How do you make it? // Directions </h3>
     <%= f.fields_for :directions, @recipe.directions do |direction_fields| %>
        <%= direction_fields.label :step_1, "1/"  %>
        <%= direction_fields.text_field :step_1, class: 'form-control' %>
@@ -26,17 +26,21 @@
        <%= direction_fields.label :step_3, "3/"  %>
        <%= direction_fields.text_field :step_3, class: 'form-control' %>
 
-       <%= direction_fields.label :step_4, "4/"  %>
-       <%= direction_fields.text_field :step_4, class: 'form-control' %>
-
-       <%= direction_fields.label :step_5, "5/"  %>
-       <%= direction_fields.text_field :step_5, class: 'form-control' %>
      <% end %>
 
-     <h3>What's in it?</h3>
+     <h3>What's in it? // Ingredients </h3>
+      <%= f.collection_check_boxes :ingredient_id, Ingredient.all, :id, :name %>
+
+     <h5>Or add your own:</h5>
      <%= f.fields_for :ingredients, @recipe.ingredients do |ingredients_fields| %>
-      <%=  %>
+
+        <%= ingredients_fields.text_field :name, placeholder: "vodka" %>
+        <br>
+
      <% end %>
+
+
+     <br>
     <%= f.submit %>
 
 <% end %>
