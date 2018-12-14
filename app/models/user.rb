@@ -8,13 +8,11 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, presence: true
 
+  #  inspired by Devise User#from_omniauth 
   def self.find_or_create_by_omniauth(auth_hash)
-    oauth_email = auth_hash["info"]["email"]
-    if user = User.find_by(email: oauth_email)
-      return user
-    else
-      user = User.create(email: oauth_email, password: SecureRandom.hex)
+    where(email: auth_hash["info"]["email"]).first_or_create do |u|
+      u.password = SecureRandom.hex
     end
   end
 
-end
+end # class User
