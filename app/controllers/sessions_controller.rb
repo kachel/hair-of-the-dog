@@ -5,18 +5,9 @@ class SessionsController < ApplicationController
 
   def create
     if auth_hash = request.env["omniauth.auth"]
-      # they successfully logged in via oauth!
-      oauth_email = request.env["omniauth.auth"]["info"]["email"]
-      if user = User.find_by(email: oauth_email)
-        log_in(user)
-        redirect_to root_url
-      else
-        # validations
-        user = User.create(email: oauth_email, password: SecureRandom.hex)
-        log_in(user)
-
-        redirect_to root_url
-      end
+      user = User.find_or_create_by_omniauth(auth_hash)
+      log_in(user)
+      redirect_to root_url
     else
       # old school log in
       user = User.find_by(email: params[:email])
