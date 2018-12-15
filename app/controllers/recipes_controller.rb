@@ -1,11 +1,13 @@
+
 class RecipesController < ApplicationController
 
   PLACEHOLDER_DIRECTIONS = ['Pour', 'Mix', 'Drink']
 
   def show
-    @recipe = Recipe.find_by params[:id]
+
+    @recipe = Recipe.find_by(id: params[:id])
     @comment = @recipe.comments.build
-    
+
     # gets rid of nil comments
     @valid_comments = @recipe.comments.select { |c| c.user }
   end
