@@ -1,4 +1,3 @@
-
 class RecipesController < ApplicationController
 
   PLACEHOLDER_DIRECTIONS = ['Pour', 'Mix', 'Drink']
@@ -29,6 +28,20 @@ class RecipesController < ApplicationController
     else
       @pds = PLACEHOLDER_DIRECTIONS
       render new_recipe_path
+    end
+  end
+
+  def edit
+    @recipe = Recipe.find_by(id: params[:id])
+    @pds = PLACEHOLDER_DIRECTIONS
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to @recipe
+    else
+      render edit_attraction_path
     end
   end
 
