@@ -13,4 +13,21 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
-end
+
+  # This method will be used to replace user-specific content in views with a
+  # link to log in.
+  # EX: Users cannot comment on recipes if they are logged in.
+  #
+  #   <%= if_logged_in? login_link_text: "Log in to comment" do %>
+  #     <%= form_for(@comment) %> ...
+  #   <% end %>
+  #
+  def if_logged_in?(login_link_text: "Log in to see more")
+    if current_user
+      yield
+    else
+      link_to login_link_text, signin_url
+    end
+  end
+
+end # module SessionsHelper

@@ -13,8 +13,13 @@ Ingredients
 <% end %>
 <br>
 
-<% if current_user.id == @recipe.user_id %>
-  <%= link_to "Edit Recipe", edit_recipe_path(@recipe.id) %>
+<% if_logged_in?(login_link_text: "Log in to rate this recipe") do %>
+  <% if current_user.id == @recipe.user_id %>
+    <%= link_to "Edit Recipe", edit_recipe_path(@recipe.id) %>
+  <% else %>
+  <h4>Rate this recipe:</h4>
+
+  <% end %>
 <% end %>
 
 <h3>Comments:</h3>
