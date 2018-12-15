@@ -1,4 +1,8 @@
+require 'pry'
 class RecipesController < ApplicationController
+
+  PLACEHOLDER_DIRECTIONS = ['Pour', 'Mix', 'Drink']
+
   def show
     @recipe = Recipe.find_by params[:id]
   end
@@ -10,14 +14,16 @@ class RecipesController < ApplicationController
       {body: ''},
       {body: ''},
       {body: ''}])
-    @placeholder_directions = ['Pour', 'Mix', 'Drink']
+    @pds = PLACEHOLDER_DIRECTIONS
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+      @recipe = Recipe.new(recipe_params)
     if @recipe.save
       redirect_to @recipe
     else
+      binding.pry
+      @pds = PLACEHOLDER_DIRECTIONS
       render new_recipe_path
     end
   end

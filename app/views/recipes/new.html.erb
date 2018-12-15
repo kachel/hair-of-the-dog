@@ -19,7 +19,7 @@
     <%= f.fields_for :directions, @recipe.directions do |direction_fields| %>
        <%= direction_fields.label :direction, (direction_fields.index + 1).to_s + '/'  %>
        <%= direction_fields.text_field :body,
-         placeholder: @@placeholder_directions[direction_fields.index],
+         placeholder: @pds[direction_fields.index],
          class: 'form-control' %>
      <% end %>
 
