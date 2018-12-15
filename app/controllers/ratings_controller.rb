@@ -1,14 +1,9 @@
 class RatingsController < ApplicationController
   def create
-    #use session helper to add user_id
-    rating = Rating.create(rating_params, id: current_user.id)
-
-    redirect_to rating.post
+    rating = Rating.create(star: params[:star], recipe_id: params[:recipe_id],
+    user_id: current_user.id)
+    # put flash message here
+    redirect_to recipe_path(params[:recipe_id])
   end
 
-  private
-
-    def rating_params
-      params.require(:rating).permit(:star, :recipe_id)
-    end
 end

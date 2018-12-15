@@ -18,7 +18,25 @@ Ingredients
     <%= link_to "Edit Recipe", edit_recipe_path(@recipe.id) %>
   <% else %>
   <h4>Rate this recipe:</h4>
+    <%= form_for [@recipe, @rating] do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.radio_button :star, 1 %>
+      <%= f.label :star, '⭐' %>
 
+      <%= f.radio_button :star, 2 %>
+      <%= f.label :star, '⭐⭐' %>
+
+      <%= f.radio_button :star, 3 %>
+      <%= f.label :star, '⭐⭐⭐' %>
+
+      <%= f.radio_button :star, 4  %>
+      <%= f.label :star, '⭐⭐⭐⭐'%>
+
+      <%= f.radio_button :star, 5 %>
+      <%= f.label :star, '⭐⭐⭐⭐⭐' %>
+
+      <%= f.submit "Rate" %>
+    <% end %>
   <% end %>
 <% end %>
 

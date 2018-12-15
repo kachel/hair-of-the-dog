@@ -9,5 +9,6 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :directions
   accepts_nested_attributes_for :ingredients
   accepts_nested_attributes_for :comments
+  accepts_nested_attributes_for :ratings
 
 end
