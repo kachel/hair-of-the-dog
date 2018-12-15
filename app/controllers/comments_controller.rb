@@ -1,13 +1,8 @@
 class CommentsController < ApplicationController
   def create
-    #use session helper to add user_id
-    comment = Comment.create(comment_params, id: current_user.id)
-    redirect_to comment.post
-  end
-
-  private
-
-    def comment_params
-      params.require(:comment).permit(:content, :recipe_id)
+    comment = Comment.create(content: params[:comment][:content], recipe_id: params[:recipe_id],
+    user_id: params[:comment][:user_id])
+    # put flash message here
+    redirect_to recipe_path(params[:recipe_id])
     end
 end

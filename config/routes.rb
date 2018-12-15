@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :recipes do
     resources :ratings
+    resources :comments
   end
   root 'users#welcome'
   get '/auth/:provider/callback' =>'sessions#create'
