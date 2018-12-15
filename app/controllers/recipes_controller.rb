@@ -21,11 +21,10 @@ class RecipesController < ApplicationController
   end
 
   def create
-      @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.create(recipe_params)
     if @recipe.save
-      redirect_to @recipe
+      redirect_to user_path current_user
     else
-      binding.pry
       @pds = PLACEHOLDER_DIRECTIONS
       render new_recipe_path
     end
@@ -34,7 +33,7 @@ class RecipesController < ApplicationController
   private
 
     def recipe_params
-      params.require(:recipe).permit(
+      params.require(:recipe).permit(:user_id,
         :title, :servings, :time, :description,
         ingredients_attributes: [:name],
         directions_attributes: [:body]

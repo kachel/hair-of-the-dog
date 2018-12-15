@@ -1,1 +1,18 @@
-<h1>this is the user show page</h1>
+<h2> <%= @user.email %>'s Recipes</h2>
+
+<% @user.recipes.each do |recipe| %>
+  <h3><%= recipe.title %> (serves <%= recipe.servings %>)</h3>
+  <ul>
+  <% recipe.ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+  </ul>
+  <p><%= recipe.description %></p>
+  <ol>
+  <% recipe.directions.each do |direction| %>
+    <li><%= direction.body %></li>
+  <% end %>
+  </ol>
+<% end %>
+
+<%= link_to "Create new cocktail", new_recipe_path %>

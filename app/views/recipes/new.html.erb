@@ -2,6 +2,7 @@
 <h2>What is it? // Info </h2>
 
 <%= form_for(@recipe) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
 
     <%= f.label :title, "Drink name:" %>
     <%= f.text_field :title, placeholder: "the naughtier the better ;)", class: 'form-control' %>
