@@ -1,10 +1,14 @@
+title <%= @recipe.title %><br>
+description <%= @recipe.description %><br>
+time <%= @recipe.time %><br>
+description <%= @recipe.description %><br>
+<br>
+Directions
 <% @recipe.directions.each do |d| %>
-  <li><%= d.step_1 %></li>
-  <li><%= d.step_2 %></li>
-  <li><%= d.step_3 %></li>
+  <li><%= d.body %></li>
 <% end %>
-
-
-<!-- <% @recipe.ingredients.each do |i| %>
+<br>
+Ingredients
+<% @recipe.ingredients.each do |i| %>
   <%= i.name %>
-<% end %> -->
+<% end %>
