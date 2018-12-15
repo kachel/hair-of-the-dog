@@ -1,14 +1,12 @@
+<br>
 <%= form_for(:user, url: signin_path) do |f|  %>
-  <%= f.label :username %>
-  <%= f.text_field :username, class: 'form-group' %>
-
   <%= f.label :email %>
   <%= f.email_field :email, class: 'form-group' %>
 
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-group' %>
 
-  <%= f.submit %>
+  <%= f.submit "Log in", class: 'btn btn-primary' %>
 <% end %>
 
-<%= link_to "Login via GitHub", "auth/github" %>
+<%= link_to "Log in via GitHub", "auth/github" %>
