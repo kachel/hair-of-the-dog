@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
 
     @recipe = Recipe.find_by(id: params[:id])
     @comment = @recipe.comments.build
+    @rating = @recipe.ratings.build
 
     # gets rid of nil comments
     @valid_comments = @recipe.comments.select { |c| c.user }

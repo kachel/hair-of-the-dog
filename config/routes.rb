@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ratings/create'
   get 'comments/create'
   resources :users
   resources :recipes
