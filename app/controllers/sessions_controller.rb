@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       # old school log in
-      user = User.find_by(email: params[:email])
-      if user && user.authenticate(params[:password])
+      user = User.find_by(email: params[:user][:email])
+      if user && user.authenticate(params[:user][:password])
         log_in(user)
         redirect_to root_url
       else
