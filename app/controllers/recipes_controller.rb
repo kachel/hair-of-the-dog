@@ -1,12 +1,25 @@
 class RecipesController < ApplicationController
   def show
-    
+    @recipe = Recipe.find_by params[:id]
   end
 
   def new
     @recipe = Recipe.new
-    @recipe.directions.build
     @recipe.ingredients.build
+    @recipe.directions.build([
+      {body: ''},
+      {body: ''},
+      {body: ''}])
+    @placeholder_directions = ['Pour', 'Mix', 'Drink']
+  end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      redirect_to @recipe
+    else
+      render new_recipe_path
+    end
   end
 
   private
@@ -15,7 +28,7 @@ class RecipesController < ApplicationController
       params.require(:recipe).permit(
         :title, :servings, :time, :description,
         ingredients_attributes: [:name],
-        directions_attributes: [:step_1, :step_2, :step_3]
+        directions_attributes: [:body]
       )
     end
 end

@@ -1,5 +1,5 @@
-<br>
-<h1>New Cocktail Recipe</h1>
+
+<h2>What is it? // Info </h2>
 
 <%= form_for(@recipe) do |f| %>
 
@@ -17,30 +17,24 @@
 
     <h3>How do you make it? // Directions </h3>
     <%= f.fields_for :directions, @recipe.directions do |direction_fields| %>
-       <%= direction_fields.label :step_1, "1/"  %>
-       <%= direction_fields.text_field :step_1, class: 'form-control' %>
-
-       <%= direction_fields.label :step_2, "2/"  %>
-       <%= direction_fields.text_field :step_2, class: 'form-control' %>
-
-       <%= direction_fields.label :step_3, "3/"  %>
-       <%= direction_fields.text_field :step_3, class: 'form-control' %>
-
+       <%= direction_fields.label :direction, (direction_fields.index + 1).to_s + '/'  %>
+       <%= direction_fields.text_field :body,
+         placeholder: @@placeholder_directions[direction_fields.index],
+         class: 'form-control' %>
      <% end %>
 
      <h3>What's in it? // Ingredients </h3>
-      <%= f.collection_check_boxes :ingredient_id, Ingredient.all, :id, :name %>
+      <%= f.collection_check_boxes :ingredients, Ingredient.all, :id, :name %>
 
      <h5>Or add your own:</h5>
      <%= f.fields_for :ingredients, @recipe.ingredients do |ingredients_fields| %>
 
-        <%= ingredients_fields.text_field :name, placeholder: "vodka" %>
+        <%= ingredients_fields.text_field :name, placeholder: "lemon juice" %>
         <br>
-
      <% end %>
 
 
      <br>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
 
 <% end %>
