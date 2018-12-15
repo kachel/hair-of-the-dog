@@ -1,7 +1,6 @@
-title <%= @recipe.title %><br>
+<h1><%= @recipe.title %><br></h1>
 description <%= @recipe.description %><br>
 time <%= @recipe.time %><br>
-description <%= @recipe.description %><br>
 <br>
 Directions
 <% @recipe.directions.each do |d| %>
@@ -21,7 +20,6 @@ Say something nice: <br>
 
     <%= f.hidden_field :recipe_id, value: @recipe.id %>
 
-    <%= f.label "Comment" %>
     <%= f.text_area :content %>
     <%= f.submit %>
   <% end %>
