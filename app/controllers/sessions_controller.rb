@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         log_in(user)
         redirect_to root_url
       else
-        render signin_url
+        render signin_path, notice: "UwU something went wrong"
       end
     end
   end
