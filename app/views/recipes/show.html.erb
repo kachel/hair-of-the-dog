@@ -3,13 +3,15 @@ description <%= @recipe.description %><br>
 time <%= @recipe.time %><br>
 <br>
 Directions
-<% @recipe.directions.each do |d| %>
+<ol>
+  <% @recipe.directions.each do |d| %>
   <li><%= d.body %></li>
 <% end %>
+</ol>
 <br>
 Ingredients
 <% @recipe.ingredients.each do |i| %>
-  <%= i.name %>
+  <li><%= i.name %></li>
 <% end %>
 <br>
 
