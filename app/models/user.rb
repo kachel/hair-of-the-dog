@@ -7,12 +7,29 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :email, uniqueness: true
-  validates :password, presence: true
 
   # inspired by Devise User#from_omniauth
   def self.find_or_create_by_omniauth(auth_hash)
-    where(email: auth_hash["info"]["email"]).first_or_create do |u|
-      u.password = SecureRandom.hex
+    if auth_hash["uid"].nil?
+      # auth fails // deny access to app
+      nil
+    elsif email = auth_hash["info"]["email"]
+      User.find_or_create_by(email: email, github_id: auth_hash["uid"])
+    else
+      # omniauth emails are sometimes omitted.
+      # redirect to page asking email info.
+      user = User.find_or_create_by(github_id: auth_hash["uid"])
+      user.save(validate: false)
+      user
+    end
+  end
+
+  def self.find_or_create_by_email(params)
+    user = User.find_by(email: params[:user][:email])
+    if user && user.authenticate(params[:user][:password])
+      user
+    else
+      nil
     end
   end
 
