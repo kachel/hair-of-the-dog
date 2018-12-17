@@ -52,7 +52,7 @@ class RecipesController < ApplicationController
         :title, :servings, :time, :description,
         ingredients_attributes: [:name],
         ingredient_ids: [],
-        directions_attributes: [:body]
+        directions_attributes: [:id, :body]
       )
     end
 end
