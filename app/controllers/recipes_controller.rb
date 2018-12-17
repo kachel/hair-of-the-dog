@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
   PLACEHOLDER_DIRECTIONS = ['Pour', 'Mix', 'Drink']
 
   def show
-
     @recipe = Recipe.find_by(id: params[:id])
     @comment = @recipe.comments.build
     @rating = Rating.find_by(recipe_id: @recipe.id, user_id: current_user.id) || @recipe.ratings.build
