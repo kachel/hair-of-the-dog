@@ -38,6 +38,11 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+    unless params[:new_ingredient].nil?
+      ingredient = Ingredient.find_or_create_by(name: params[:new_ingredient])
+      params[:recipe][:ingredient_ids] << ingredient.id.to_s
+    end
+
     if @recipe.update(recipe_params)
       redirect_to @recipe
     else
@@ -50,7 +55,7 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:user_id,
         :title, :servings, :time, :description,
-        ingredients_attributes: [:name],
+        ingredients_attributes: [:id, :name],
         ingredient_ids: [],
         directions_attributes: [:id, :body]
       )
