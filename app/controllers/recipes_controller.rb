@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       redirect_to @recipe
     else
-      render edit_attraction_path
+      render edit_recipe_path
     end
   end
 
