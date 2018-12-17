@@ -19,6 +19,7 @@ Ingredients
   <% if current_user.id == @recipe.user_id %>
     <%= link_to "Edit Recipe", edit_recipe_path(@recipe.id) %>
   <% else %>
+
   <h4>Rate this recipe:</h4>
     <%= form_for [@recipe, @rating] do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
