@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    unless params[:new_ingredient].nil?
+    unless params[:new_ingredient].nil? || params[:new_ingredient].empty?
       ingredient = Ingredient.find_or_create_by(name: params[:new_ingredient])
       params[:recipe][:ingredient_ids] << ingredient.id.to_s
     end
