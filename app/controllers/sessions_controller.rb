@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
         log_in user
         redirect_to edit_user_path(user)
       else
-        render signin_path, notice: "Something went wrong with GitHub"
+        flash.now[:notice] = "Something went wrong with GitHub"
+        render 'new'
       end
     else
       # old school log in
@@ -24,7 +25,8 @@ class SessionsController < ApplicationController
         log_in user
         redirect_to user_path(user)
       else
-        render signin_path, notice: "Something went wrong"
+        flash.now[:notice] = "Something went wrong"
+        render 'new'
       end
     end
   end

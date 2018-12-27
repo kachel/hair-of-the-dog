@@ -24,8 +24,10 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.create(recipe_params)
     if @recipe.save
+      flash[:notice]  = "Recipe created!"
       redirect_to user_path current_user
     else
+      flash.now[:error] = @recipe.errors.full_messages.to_sentence
       @pds = PLACEHOLDER_DIRECTIONS
       render new_recipe_path
     end
@@ -46,7 +48,8 @@ class RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       redirect_to @recipe
     else
-      render edit_recipe_path
+      flash.now[:error] = @recipe.errors.full_messages.to_sentence
+      render edit_recipe_path(@recipe)
     end
   end
 

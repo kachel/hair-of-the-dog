@@ -8,7 +8,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, uniqueness: true
 
-  # inspired by Devise User#from_omniauth
   def self.find_or_create_by_omniauth(auth_hash)
     if auth_hash["uid"].nil?
       # auth fails // deny access to app
