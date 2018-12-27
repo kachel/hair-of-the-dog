@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :recipes
   has_many :comments
+  has_many :ratings
   has_many :commented_recipes, through: :comments, source: :recipes
   has_many :rated_recipes, through: :ratings, source: :recipes
   has_secure_password

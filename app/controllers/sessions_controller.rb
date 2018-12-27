@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   include SessionsHelper
   skip_before_action :require_email, only: :destroy
 
+  def new
+  end
+
   def create
     # omniauth log in
     if auth_hash = request.env["omniauth.auth"]
