@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       log_in(@user)
       redirect_to @user
     else
-      render new_user_url
+      flash[:notice] = "Looks like something went wrong :("
+      render :new
     end
   end
 
@@ -28,6 +29,7 @@ class UsersController < ApplicationController
    if @user.update(user_params)
      redirect_to @user
    else
+     flash[:notice] = "Looks like something went wrong"
      render edit_user_path(@user)
    end
   end
