@@ -2,7 +2,7 @@
   <div id="error_explanation">
     <h2>
       <%= pluralize(@recipe.errors.count, "error") %>
-      prohibited this recipe from being saved:
+      prohibited kept this recipe from being saved:
     </h2>
 
     <ul>
@@ -48,8 +48,3 @@
   <%= f.submit class: "btn btn-primary" %>
 
 <% end %>
-
-<!--
-input placeholder="lemon juice" type="text" value="Vodka" name="recipe[ingredients_attributes][0][name]" id="recipe_ingredients_attributes_0_name" />
-      <br>
-<input type="hidden" value="12" name="recipe[ingredients_attributes][0][id]" id="recipe_ingredients_attributes_0_id" /> -->
