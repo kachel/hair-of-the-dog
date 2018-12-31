@@ -21,6 +21,9 @@ class RecipesController < ApplicationController
     @pds = PLACEHOLDER_DIRECTIONS
   end
 
+# check over validations / ingredients *need* join table
+# Ingredient needs foreign id key for recipe
+
   def create
     @recipe = Recipe.create(recipe_params)
     if @recipe.save
