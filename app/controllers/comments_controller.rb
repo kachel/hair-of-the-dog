@@ -5,4 +5,9 @@ class CommentsController < ApplicationController
     # put flash message here
     redirect_to recipe_path(params[:recipe_id])
     end
+
+  def index
+    @recipe = Recipe.find(params[:recipe_id])
+    @user = @recipe.user.email
+  end
 end
