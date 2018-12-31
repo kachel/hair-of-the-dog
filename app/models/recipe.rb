@@ -10,5 +10,5 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients
   accepts_nested_attributes_for :comments
   accepts_nested_attributes_for :ratings
-
+  default_scope { order(title: :asc) }
 end
