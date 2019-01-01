@@ -13,7 +13,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.ingredients.build
     @recipe.directions.build([
       {body: ''},
       {body: ''},

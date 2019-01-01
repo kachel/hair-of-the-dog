@@ -42,7 +42,9 @@
     <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, prompt: true %>
 
    <h5>Or add your own:</h5>
-   <%= text_field_tag "new_ingredient", nil, placeholder: "New Ingredient" %>
+   <%= f.fields_for :ingredients, @recipe.ingredients.build do |ff| %>
+     <%= ff.text_field :name %>
+   <% end %>
 
    <br>
   <%= f.submit class: "btn btn-primary" %>
