@@ -4,7 +4,8 @@ class Recipe < ApplicationRecord
   has_many :ratings
   has_many :commenting_users, through: :comments, source: :users
   has_many :rating_users, through: :ratings, source: :users
-  has_many :ingredients
+  has_many :recipe_ingredients
+  has_many :ingredients, through: :recipe_ingredients
   has_many :directions
   accepts_nested_attributes_for :directions
   accepts_nested_attributes_for :ingredients
