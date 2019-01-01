@@ -59,6 +59,18 @@ class RecipesController < ApplicationController
   private
 
     def recipe_params
+      # two things are not cooperating:
+      # 1/ my validation constraints do not allow empty strings
+      # my model should *not* have an exclusion, it is not its concern
+      # 2/ building an ingredient name text field is empty by default
+      # to deal with this, I sanitize the ingredients_attributes hash
+      # *prior* to it being passed as a param
+
+      # also `dig` is hash method for pulling data from nested hashes :3
+      # it is a safe navigation operator
+      if params.dig(:recipe, :ingredients_attributes, "0", :name) == ""
+        params[:recipe][:ingredients_attributes] = {}
+      end
       params.require(:recipe).permit(:user_id,
         :title, :servings, :time, :description,
         ingredients_attributes: [:id, :name],
