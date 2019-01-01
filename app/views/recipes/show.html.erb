@@ -1,15 +1,15 @@
 <h1><%= @recipe.title %><br></h1>
-description <%= @recipe.description %><br>
-time <%= @recipe.time %><br>
+Description: <%= @recipe.description %><br>
+Prep time: <%= @recipe.time %> minutes<br>
 <br>
-Directions
+Directions:
 <ol>
   <% @recipe.directions.each do |d| %>
   <li><%= d.body %></li>
 <% end %>
 </ol>
 <br>
-Ingredients
+Ingredients:
 <% @recipe.ingredients.each do |i| %>
   <li><%= i.name %></li>
 <% end %>
@@ -60,7 +60,7 @@ Say something nice: <br>
 
 <ul>
   <% @valid_comments.each do |c| %>
-    <%= c.user.email %> says: <%= c.content %>
+    <%= c.user.email %> says: <%= c.content %><br>
   <% end %>
 </ul>
 

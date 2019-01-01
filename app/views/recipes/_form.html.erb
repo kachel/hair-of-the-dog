@@ -13,16 +13,23 @@
   </div>
 <% end %>
 
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<br>
+
 <h2>What is it? // Info </h2>
 
-<%= form_for(@recipe) do |f| %>
+<%= form_for @recipe do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
 
   <%= f.label :title, "Drink name:" %>
-  <%= f.text_field :title, placeholder: "the naughtier the better ;)", class: 'form-control' %>
+  <%= f.text_field :title, placeholder: "the naughtier the better ;)",
+  class: 'form-control' %>
 
   <%= f.label :servings, "How many people we serving?" %>
-  <%= f.number_field :servings, placeholder: "more than 6 is a party~", in: 1..100, class: 'form-control' %>
+  <%= f.number_field :servings, placeholder: "more than 6 is a party~",
+  in: 1..100, class: 'form-control' %>
 
   <%= f.label :time, "Prep. time (in minutes):"  %>
   <%= f.number_field :time, class: 'form-control' %>
