@@ -19,6 +19,7 @@ gem 'pry'
 gem 'pry-byebug'
 
 gem 'rb-readline'
+gem 'rubocop'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
