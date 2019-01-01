@@ -39,7 +39,8 @@
    <% end %>
 
    <h3>What's in it? // Ingredients </h3>
-    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, prompt: true %>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all,
+    :id, :name, prompt: true %>
 
    <h5>Or add your own:</h5>
    <%= f.fields_for :ingredients, @recipe.ingredients.build do |ff| %>

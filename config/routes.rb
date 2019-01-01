@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users
-  
+
   get 'ratings/create'
   get 'comments/create'
 

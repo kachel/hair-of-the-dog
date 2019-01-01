@@ -20,9 +20,6 @@ class RecipesController < ApplicationController
     @pds = PLACEHOLDER_DIRECTIONS
   end
 
-# check over validations / ingredients *need* join table
-# Ingredient needs foreign id key for recipe
-
   def create
     @recipe = Recipe.create(recipe_params)
     if @recipe.save
@@ -72,7 +69,7 @@ class RecipesController < ApplicationController
       end
       params.require(:recipe).permit(:user_id,
         :title, :servings, :time, :description,
-        ingredients_attributes: [:id, :name],
+        ingredients_attributes: [:name],
         ingredient_ids: [],
         directions_attributes: [:id, :body]
       )
