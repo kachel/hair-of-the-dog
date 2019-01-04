@@ -8,14 +8,14 @@ Specs:
 - [x] Include at least one many-to-many relationship (recipe and ingredients)
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (comment has content, ratings have stars)
 - [x] Include reasonable validations for simple model objects (Ingredients must be unique)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [x] Include signup
 - [x] Include login
 - [x] Include logout
 - [x] Include third party signup/login (OmniAuth)
 - [x] Include nested resource show or index (recipe_comment)
 - [x] Include nested resource "new" form (new_recipe_rating)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 - [x] The application is pretty DRY
