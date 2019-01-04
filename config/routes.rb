@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users
 
+  get '/recipes/servings', to: 'recipes#servings', as: 'servings'
+
   get 'ratings/create'
   get 'comments/create'
 

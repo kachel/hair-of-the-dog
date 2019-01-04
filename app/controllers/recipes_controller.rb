@@ -47,6 +47,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def servings
+    @recipes = Recipe.servings
+  end
+
   private
 
     def recipe_params

@@ -1,0 +1,5 @@
+<% @recipes.each do |r| %>
+    <%= link_to r.title, recipe_path(r) %><br>
+    Servings: <%= r.servings %> by <%= r.user.email %><br>
+    ------------------------------------------------<br>
+<% end %>
