@@ -25,11 +25,11 @@
 
   <%= f.label :title, "Drink name:" %>
   <%= f.text_field :title, placeholder: "the naughtier the better ;)",
-  class: 'form-control' %>
+    class: 'form-control' %>
 
   <%= f.label :servings, "How many people we serving?" %>
   <%= f.number_field :servings, placeholder: "more than 6 is a party~",
-  in: 1..100, class: 'form-control' %>
+    in: 1..100, class: 'form-control' %>
 
   <%= f.label :time, "Prep. time (in minutes):"  %>
   <%= f.number_field :time, class: 'form-control' %>
@@ -47,7 +47,7 @@
 
    <h3>What's in it? // Ingredients </h3>
     <%= f.collection_check_boxes :ingredient_ids, Ingredient.all,
-    :id, :name, prompt: true %>
+      :id, :name, prompt: true %>
 
    <h5>Or add your own:</h5>
    <%= f.fields_for :ingredients, @recipe.ingredients.build do |ff| %>

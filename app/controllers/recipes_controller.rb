@@ -23,7 +23,6 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.create(recipe_params)
     if @recipe.save
-      flash[:notice]  = "Recipe created!"
       redirect_to user_path current_user
     else
       flash[:error] = @recipe.errors.full_messages.to_sentence
@@ -39,16 +38,12 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    unless params[:new_ingredient].nil? || params[:new_ingredient].empty?
-      ingredient = Ingredient.find_or_create_by(name: params[:new_ingredient])
-      params[:recipe][:ingredient_ids] << ingredient.id.to_s
-    end
-
     if @recipe.update(recipe_params)
-      redirect_to @recipe
+      redirect_to user_path current_user
     else
       flash[:error] = @recipe.errors.full_messages.to_sentence
-      render edit_recipe_path(@recipe)
+      @pds = PLACEHOLDER_DIRECTIONS
+      render :edit
     end
   end
 
