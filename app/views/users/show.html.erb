@@ -1,4 +1,5 @@
 <h2> <%= @user.email %>'s Recipes</h2>
+<%= link_to "Create new cocktail", new_recipe_path %><br>
 
 <% @user.recipes.each do |recipe| %>
   <h3><%= recipe.title %> (serves <%= recipe.servings %>)</h3>
@@ -13,7 +14,7 @@
     <li><%= direction.body %></li>
   <% end %>
   </ol>
-  <%= link_to "See full recipe", recipe %>
+  <%= link_to "See full recipe", recipe %><br>
+  <%= link_to "See all recipes", servings_path %>
 <% end %>
 <br>
-<%= link_to "Create new cocktail", new_recipe_path %>
