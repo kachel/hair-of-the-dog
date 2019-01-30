@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @comment = Comment.create(content: params[:comment][:content],
       recipe_id: params[:recipe_id],
       user_id: params[:comment][:user_id])
-    redirect_to recipe_path(params[:recipe_id])
+    render json: @comment, status: 201
   end
 
   def index
@@ -11,6 +11,6 @@ class CommentsController < ApplicationController
     @user = @recipe.user.email
     @comments = @recipe.comments
     # render layout: false
-    render :json => @comments
+    render json: @comments
   end
 end
