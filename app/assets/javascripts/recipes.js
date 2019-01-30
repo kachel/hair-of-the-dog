@@ -11,10 +11,19 @@ $(function() {
           .map( entry => new HOTDComment({ id: entry.id, content: entry.content, email: entry.user.email }) )
           .forEach( comment => comment.insertInto(commentsContainer) )
 
-    // high level JSON response
-    $.get(this.href).done(function (json) {
-      // destructured assignment + punning
-      json.map( {id, content, user} => new HOTDComment({id, content, email: user.email}) )
+      })
     })
-  })
+    $('#new_comment').submit(function(e) {
+        e.preventDefault()
+
+        const values = $(this).serialize()
+        const url = this.action
+
+        $.post(url, values).done(function(data) {
+          const commentsContainer = $("#comments")
+          const newComment = new HOTDComment({id: data.id, content: data.content, email: data.user.email})
+          
+          newComment.insertInto(commentsContainer)
+        })
+    })
 })
