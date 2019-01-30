@@ -64,4 +64,9 @@ Say something nice: <br>
   <% end %>
 </ul>
 
-<%= link_to "See all comments here", recipe_comments_path(@recipe) %>
+<%= link_to "See all comments here", recipe_comments_path(@recipe), class: "load_comments" %>
+
+<div class="comments">
+  <ol>
+  </ol>
+</div>

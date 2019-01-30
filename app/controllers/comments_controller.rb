@@ -9,5 +9,8 @@ class CommentsController < ApplicationController
   def index
     @recipe = Recipe.find(params[:recipe_id])
     @user = @recipe.user.email
+    @comments = @recipe.comments
+    # render layout: false
+    render :json => @comments
   end
 end
