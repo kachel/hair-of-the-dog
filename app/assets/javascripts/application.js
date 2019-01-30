@@ -17,5 +17,9 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+
+// This is an intentionally named global variable
+HOTD = {}
+
 //= require_tree .
 //= require recipes
