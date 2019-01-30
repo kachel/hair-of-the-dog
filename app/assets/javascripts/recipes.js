@@ -1,20 +1,15 @@
-$(function () {
-  $("a.load_comments").on("click", function (e) {
-    e.preventDefault()
-    // CLIENT SIDE AJAX model
+$(function() {
+    $("a.load_comments").on("click", function (e) {
 
-    // low level interface
-    // $.ajax({
-    //   method: "GET",
-    //   url: this.href
-    // }).success(function (response) {
-    //   $("div.comments").html(response)
-    // })
+      e.preventDefault()
 
-    // high level interface for HTML response
-    // $.get(this.href).success(function (response) {
-    //   $("div.comments").html(response)
-    // })
+      $.get(this.href).done(function (json) {
+        const commentsContainer = $("#comments")
+        // destructured assignment + punning
+        json
+          // .map( ({id, content, user} => new HOTDComment({id, content, email: user.email})) )
+          .map( entry => new HOTDComment({ id: entry.id, content: entry.content, email: entry.user.email }) )
+          .forEach( comment => comment.insertInto(commentsContainer) )
 
     // high level JSON response
     $.get(this.href).done(function (json) {
