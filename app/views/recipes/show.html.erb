@@ -58,15 +58,7 @@ Say something nice: <br>
 <%= link_to "Log in to say something nice", signin_url %>
 <% end %>
 
-<ul>
-  <% @valid_comments.each do |c| %>
-    <%= c.user.email %> says: <%= c.content %><br>
-  <% end %>
-</ul>
-
 <%= link_to "See all comments here", recipe_comments_path(@recipe), class: "load_comments" %>
 
-<div class="comments">
-  <ol>
-  </ol>
-</div>
+<ul id="comments">
+</ul>
