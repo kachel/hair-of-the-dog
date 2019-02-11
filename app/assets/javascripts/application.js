@@ -22,4 +22,3 @@
 HOTD = {}
 
 //= require_tree .
-//= require recipes
