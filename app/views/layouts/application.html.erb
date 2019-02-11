@@ -13,8 +13,10 @@
         <div class="navbar-header">
 
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= servings_path %>"/>See all recipes</a>
         <% if current_user %>
           <a class="navbar-brand" href="<%= user_path current_user %>"/><%= current_user.email %>'s profile</a>
+          <%= link_to "New cocktail", new_recipe_path, method: :get, class: "navbar-brand" %>
           <%= link_to "Log Out", logout_path, method: :get, class: "navbar-brand" %>
         <% else  %>
           <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
