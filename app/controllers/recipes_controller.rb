@@ -9,6 +9,10 @@ class RecipesController < ApplicationController
 
     # gets rid of nil comments
     @valid_comments = @recipe.comments.select { |c| c.user }
+     respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @recipe }
+    end
   end
 
   def new
