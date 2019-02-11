@@ -11,7 +11,7 @@ Directions:
 <br>
 Ingredients:
 <% @recipe.ingredients.each do |i| %>
-  <li><%= i.name %></li>
+  <li><%= link_to i.name, ingredient_path(i) %></li>
 <% end %>
 <br>
 
