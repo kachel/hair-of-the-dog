@@ -1,20 +1,18 @@
-<h2> <%= @user.email %>'s Recipes</h2>
-<%= link_to "Create new cocktail", new_recipe_path %><br>
-
-<% @user.recipes.each do |recipe| %>
-  <h3><%= recipe.title %> (serves <%= recipe.servings %>)</h3>
+<h2 data-user-id="<%= @user.id %>"> <%= @user.email %>'s Recipes</h2>
+<% recipe = @user.recipes.last %>
+  <h3 class="recipeTitle" data-recipe-id="<%= recipe.id %>"><%= recipe.title %></h3>
+  <h4 class="recipeServings">(serves <%= recipe.servings %>)</h4>
   <ul>
   <% recipe.ingredients.each do |ingredient| %>
     <li><%= ingredient.name %></li>
   <% end %>
   </ul>
-  <p><%= recipe.description %></p>
+  <p class="recipeDescription"><%= recipe.description %></p>
   <ol>
   <% recipe.directions.each do |direction| %>
     <li><%= direction.body %></li>
   <% end %>
   </ol>
   <%= link_to "See full recipe", recipe %><br>
-  <%= link_to "See all recipes", servings_path %>
-<% end %>
-<br>
+
+<a href="#" class="js-prev" onclick="prevRecipeClick(); return false;">Previous Recipe</a>
