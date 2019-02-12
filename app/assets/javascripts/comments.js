@@ -1,12 +1,11 @@
 // IIFE that hides the root level variables
 
-~function () {
-
+~(function() {
   const comments = []
 
   // Assign Comments constructor function to our global namespace
-  HOTD.Comment = class Comment {
-    // To create a JS comment object call this constructor
+  class Comment {
+    // To create a JS comment object call this constructor:
     //
     //     new HOTD.Comment({id: 123, content: "hello", user: "florb"})
 
@@ -19,8 +18,7 @@
     }
 
     insertInto($container) {
-
       $container.append(`<li> ${this.email} says: ${this.content} </li>`)
     }
   }
-}()
+})()

@@ -7,7 +7,7 @@ $(function() {
       json
         .map(
           entry =>
-            new HOTD.Comment({
+            new Comment({
               id: entry.id,
               content: entry.content,
               email: entry.user.email,
