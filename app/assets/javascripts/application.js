@@ -18,7 +18,7 @@
 //= require popper
 //= require bootstrap
 
+//= require_tree .
+
 // This is an intentionally named global variable
 HOTD = {}
-
-//= require_tree .
